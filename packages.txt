@@ -1,0 +1,2 @@
+install_requires=["streamlit>=0.63", "folium==0.11"]
+
