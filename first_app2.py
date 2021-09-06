@@ -41,7 +41,7 @@ data2 = pd.DataFrame({
     'name'  : data1["id"],
     'gurobi' : data1["gurobi"],
     'localsolver' : data1["localsolver"],
-    'cplex' : data1["cplex"]
+    'cplex' : data1["cplex"],
     'xpress' : data1["xpress"]
 })
 
