@@ -85,6 +85,7 @@ if opcion == 'Gurobi':
 			folium.Marker(location=[data2['lat'][i], data2['lon'][i]], popup=data2['name'][i],icon=folium.Icon(color='blue', icon='users', prefix='fa')).add_to(m)
 
 	folium_static(m)
+	st.write('Suma objetivos:', 189.152+807.702)
 	st.write('Obj1 (distancia Hogar a Centro:): 189.152')
 	st.write('Obj2 (distancia Hogar a Hogar): 807.702')
 	st.write('Personas: 46.0, 45.0, 43.0, 42.0')
@@ -118,6 +119,7 @@ if opcion == 'Localsolver':
 			folium.Marker(location=[data2['lat'][i], data2['lon'][i]], popup=data2['name'][i],icon=folium.Icon(color='blue', icon='users', prefix='fa')).add_to(m)
 
 	folium_static(m)
+	st.write('Suma objetivos:', 189.153+798.372)
 	st.write('Obj1 (distancia Hogar a Centro:): 189.153')
 	st.write('Obj2 (distancia Hogar a Hogar): 798.372')
 	st.write('Personas: 46.0, 46.0, 42.0, 42.0')
@@ -151,6 +153,7 @@ if opcion == 'Cplex':
 			folium.Marker(location=[data2['lat'][i], data2['lon'][i]], popup=data2['name'][i],icon=folium.Icon(color='blue', icon='users', prefix='fa')).add_to(m)
 
 	folium_static(m)
+	st.write('Suma objetivos:', 187.405+861.075)
 	st.write('Obj1 (distancia Hogar a Centro:): 187.405')
 	st.write('Obj2 (distancia Hogar a Hogar): 861.075')
 	st.write('Personas: 46.0, 45.0, 42.0, 43.0')
@@ -183,6 +186,7 @@ if opcion == 'FICO Xpress':
 			folium.Marker(location=[data2['lat'][i], data2['lon'][i]], popup=data2['name'][i],icon=folium.Icon(color='blue', icon='users', prefix='fa')).add_to(m)
 
 	folium_static(m)
+	st.write('Suma objetivos:', 205.896+889.938)
 	st.write('Obj1 (distancia Hogar a Centro:): 205.896')
 	st.write('Obj2 (distancia Hogar a Hogar): 889.938')
 	st.write('Personas: 48.0, 46.0, 42.0, 40.0')
