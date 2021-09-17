@@ -7,7 +7,7 @@ import folium
 st.title('Reorganización de congregaciones religiosas')
 st.subheader('Autor: Jonás Velasco')
 
-st.latex(r''' e^{i\pi} + 1 = 0 ''')
+#st.latex(r''' e^{i\pi} + 1 = 0 ''')
 
 data = pd.DataFrame({
     'cities' : ['Aguascalientes'],
