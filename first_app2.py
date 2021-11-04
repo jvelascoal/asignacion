@@ -42,6 +42,7 @@ data2 = pd.DataFrame({
     'lon' : data1["lon"],
     'name'  : data1["id"],
     'gurobi' : data1["gurobi"],
+    'gurobi2' : data1["gurobi2"],
     'localsolver' : data1["localsolver"],
     'cplex' : data1["cplex"],
     'xpress' : data1["xpress"]
@@ -56,7 +57,7 @@ reunion = pd.DataFrame({
 #st.subheader('Mapa de Aguascalientes')
 #st.map(data2, zoom=12)
 
-opcion = st.selectbox('Soluciones', ['Nada', 'Gurobi','Localsolver','Cplex', 'FICO Xpress'])
+opcion = st.selectbox('Soluciones', ['Nada', 'Gurobi', 'Gurobi-lineal','Localsolver','Cplex', 'FICO Xpress'])
 
 st.write('Usted seleccionó: ', opcion)
 
@@ -92,7 +93,40 @@ if opcion == 'Gurobi':
 	st.write('Obj2 (distancia Hogar a Hogar): 807.702')
 	st.write('Personas: 46.0, 45.0, 43.0, 42.0')
 	st.write('SMAPIS: 11.0, 12.0, 12.0, 12.0')
+	
 
+if opcion == 'Gurobi-lineal':
+	m = folium.Map(location=[21.881696, -102.2975663], zoom_start=13)
+#	folium_static(m)
+	for i in range(4):
+		if i == 0:
+			folium.Marker(location=[reunion['lat'][i], reunion['lon'][i]], popup=reunion['name'][i],icon=folium.Icon(color='red', icon='home', prefix='fa')).add_to(m)
+		if i == 1:
+			folium.Marker(location=[reunion['lat'][i], reunion['lon'][i]], popup=reunion['name'][i],icon=folium.Icon(color='green', icon='home', prefix='fa')).add_to(m)
+		if i == 2:
+			folium.Marker(location=[reunion['lat'][i], reunion['lon'][i]], popup=reunion['name'][i],icon=folium.Icon(color='pink', icon='home', prefix='fa')).add_to(m)
+		if i == 3:
+			folium.Marker(location=[reunion['lat'][i], reunion['lon'][i]], popup=reunion['name'][i],icon=folium.Icon(color='blue', icon='home', prefix='fa')).add_to(m)
+
+	for i in range(50):
+		if data2['gurobi2'][i] == 0:
+			folium.Marker(location=[data2['lat'][i], data2['lon'][i]], popup=data2['name'][i],icon=folium.Icon(color='red', icon='users', prefix='fa')).add_to(m)
+
+		if data2['gurobi2'][i] == 1:
+			folium.Marker(location=[data2['lat'][i], data2['lon'][i]], popup=data2['name'][i],icon=folium.Icon(color='green', icon='users', prefix='fa')).add_to(m)
+
+		if data2['gurobi2'][i] == 2:
+			folium.Marker(location=[data2['lat'][i], data2['lon'][i]], popup=data2['name'][i],icon=folium.Icon(color='pink', icon='users', prefix='fa')).add_to(m)
+
+		if data2['gurobi2'][i] == 3:
+			folium.Marker(location=[data2['lat'][i], data2['lon'][i]], popup=data2['name'][i],icon=folium.Icon(color='blue', icon='users', prefix='fa')).add_to(m)
+
+	folium_static(m)
+	st.write('Suma objetivos:', 189.153+798.372)
+	st.write('Obj1 (distancia Hogar a Centro:): 189.153')
+	st.write('Obj2 (distancia Hogar a Hogar): 798.372')
+	st.write('Personas: 46.0, 46.0, 42.0, 42.0')
+	st.write('SMAPIS: 11.0, 12.0, 12.0, 12.0')
 
 if opcion == 'Localsolver':
 	m = folium.Map(location=[21.881696, -102.2975663], zoom_start=13)
